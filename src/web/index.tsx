@@ -10,7 +10,6 @@ import { InputTask } from './input_task/input_task';
 const LocationHandler = (): JSX.Element => {
   const [tasks, setTasks] = useRecoilState(TasksState);
 
-
   React.useEffect(() => {
     const hash = decodeURI(location.hash);
     if (hash) {
