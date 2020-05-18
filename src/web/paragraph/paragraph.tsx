@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 
 import { UserEnteredWordAtom } from '../keyboard/keyboard';
 
@@ -20,6 +21,10 @@ const extractCommon = (source: string, query: string): [string, string] => {
   return [matching, source.slice(index)];
 }
 
+const StyledParagraph = styled.div`
+ font-size: 2em;
+`
+
 const Content = React.memo(({content, color}: {color? :string, content: string}) => <span style={{ color }}>{content}</span>);
 
 export const Paragraph = ({content}:{content: string}) => {
@@ -33,7 +38,7 @@ export const Paragraph = ({content}:{content: string}) => {
     useDisplay([<Content key="1" content={matching} color="green"/>, <Content key="2" color="red" content={incorrect} />, <Content key="3" content={remaining} />]);
   }, [content, userEnteredWord]);
 
-  return <div>
+  return <StyledParagraph>
     {display}
-  </div>
+  </StyledParagraph>
 }
